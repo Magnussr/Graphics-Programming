@@ -34,12 +34,28 @@ GameManager::~GameManager() {
 }
 
 void GameManager::setOpenGLStates() {
+	/* glEnable lets me use GL capabilities
+	   glEnable(What GL capabiliti i want to use); */
+	/* GL_DEPTH_TEST turns on the depth test that checks each fragmet on the screen against the depth buffer 
+	   if the fragment should get drawn */
 	glEnable(GL_DEPTH_TEST);
+	/* glDepthFunc specify the value used for depth buffer compairisons. 
+	   compare each incoming pixel depth value with the depth value present in the depth buffer.
+	   glDepthFunc(How you want the fragment to pass the dept test) 
+	   GL_LEQUAL lets the fragment pass if it Passes if the incoming depth value is less than or equal
+	   to the stored depth value.*/
 	glDepthFunc(GL_LEQUAL);
+	/* GL_CULL_FACE enables us to use glCullFace. */
 	glEnable(GL_CULL_FACE);
+	/* glCullFace cull polygons based on their winding in window coordinates
+	   this tells the renderer that it doesn't need to render bouth faces of a triangle so we can save over 
+	   50% of performance on rendering 
+	   glCullFace lets me use GL CullFace abilities
+	   glCullFace(What GL capabiliti i want to use);
+	   GL_BACk removes all triangels that you don't see infront of the view */ 
 	glCullFace(GL_BACK);
-	/*glClearColor is the color of the screen
-	  glClearColor(Red,Green,Blue,Transparency)*/
+	/* glClearColor is the color of the screen
+	   glClearColor(Red,Green,Blue,Transparency) */
 	glClearColor(0.0, 1.0, 0.5, 1.0);
 }
 
@@ -52,8 +68,11 @@ void GameManager::createMatrices() {
 }
 
 void GameManager::createSimpleProgram() {
-	std::string vs_src = GLUtils::readFile("shaders/Lab3VertexShader.vert");
-	std::string fs_src = GLUtils::readFile("shaders/Lab3FragmentShader.frag");
+	std::string vertexShader_src = GLUtils::readFile("shaders/Lab3VertexShader.vert");
+	std::string fragmentShader_src = GLUtils::readFile("shaders/Lab3FragmentShader.frag");
+
+	//std::string vertexShader_src = GLUtils::readFile("shaders/AssignmentCubeVertexShader.vert");
+	//std::string fragmentShader_src = GLUtils::readFile("shaders/AssignmentCubeFragmentShader.frag");
 	/**
 	* FIXME 3: Finish implementations of vertex and fragment shaders.
 	*/
@@ -104,7 +123,7 @@ void GameManager::createSimpleProgram() {
 		"}";*/
 
 	//Compile shaders, attach to program object, and link
-	program.reset(new Program(vs_src, fs_src));
+	program.reset(new Program(vertexShader_src, fragmentShader_src));
 
 	/*GLuint vs = GlTools::compileShader(vs_src, GL_VERTEX_SHADER);
 	GLuint fs = GlTools::compileShader(fs_src, GL_FRAGMENT_SHADER);

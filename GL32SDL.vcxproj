@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GLUtils.hpp" />
     <ClInclude Include="include\GameManager.h" />
     <ClInclude Include="include\GeometryManager.h" />
     <ClInclude Include="include\GlTools.h" />

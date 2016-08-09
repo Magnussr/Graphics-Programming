@@ -60,14 +60,25 @@ public:
 	 */
 	void createVAO();
 
-private:
-
-	enum RenderMode{
+	enum RenderMode {
 		RENDERMODE_PHONG,
 		RENDERMODE_WIREFRAME,
 		RENDERMODE_HIDDEN_LINE,
 		RENDERMODE_FLAT,
 	};
+
+	RenderMode render_mode; //< The current method of rendering
+
+	glm::mat4 view_matrix; //< OpenGL camera/view matrix
+
+private:
+
+	/*enum RenderMode {
+		RENDERMODE_PHONG,
+		RENDERMODE_WIREFRAME,
+		RENDERMODE_HIDDEN_LINE,
+		RENDERMODE_FLAT,
+	};*/
 
 	 void renderMeshRecursive(MeshPart& mesh, const std::shared_ptr<GLUtils::Program>& program, const glm::mat4& modelview, const glm::mat4& transform);
 
@@ -85,11 +96,11 @@ private:
 
 	Timer my_timer; //< Timer for machine independent motion
 
-	RenderMode render_mode; //< The current method of rendering
+	//RenderMode render_mode; //< The current method of rendering
 
 	glm::mat4 projection_matrix; //< OpenGL projection matrix
 	glm::mat4 model_matrix; //< OpenGL model transformation matrix
-	glm::mat4 view_matrix; //< OpenGL camera/view matrix
+	//glm::mat4 view_matrix; //< OpenGL camera/view matrix
 	glm::mat3 normal_matrix; //< OpenGL matrix to transfor normals
 };
 

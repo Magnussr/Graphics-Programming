@@ -110,9 +110,38 @@ void WindowManager::play() {
 					if(event.key.keysym.mod & KMOD_CTRL) //Ctrl+q
 						doExit = true;
 					break;
-				//case SDLK_RIGHT:
-				//	view_matrix = glm::translate(view_matrix, glm::vec3(-0.1, 0.0, 0.0));
+				case SDLK_RIGHT:
+					manager.view_matrix = glm::translate(manager.view_matrix, glm::vec3(-0.1, 0.0, 0.0));
+					break;
+				case SDLK_LEFT:
+					manager.view_matrix = glm::translate(manager.view_matrix, glm::vec3(0.1, 0.0, 0.0));
+					break;
+				case SDLK_UP:
+					manager.view_matrix = glm::translate(manager.view_matrix, glm::vec3(0.0, -0.1, 0.0));
+					break;
+				case SDLK_DOWN:
+					manager.view_matrix = glm::translate(manager.view_matrix, glm::vec3(0.0, 0.1, 0.0));
+					break;
+				case SDLK_PLUS:
+					manager.view_matrix = glm::translate(manager.view_matrix, glm::vec3(0.0, 0.0, 0.1));
+					break;
+				case SDLK_MINUS:
+					manager.view_matrix = glm::translate(manager.view_matrix, glm::vec3(0.0, 0.0, -0.1));
+					break;
+				case SDLK_1:
+					manager.render_mode = manager.RENDERMODE_WIREFRAME;
+					break;
+				case SDLK_2:
+					manager.render_mode = manager.RENDERMODE_HIDDEN_LINE;
+					break;
+				case SDLK_3:
+					manager.render_mode = manager.RENDERMODE_FLAT;
+					break;
+				case SDLK_4:
+					manager.render_mode = manager.RENDERMODE_PHONG;
+					break;
 				}
+				break;
 			case SDL_QUIT: //e.g., user clicks the upper right x
 				doExit = true;
 				break;

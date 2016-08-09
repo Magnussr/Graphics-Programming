@@ -28,6 +28,8 @@ protected:
 private:
 	SDL_Window* main_window; //< Our window handle
 	SDL_GLContext main_context; //< Our opengl context handle
+
+	//glm::mat4 view_matrix; //< OpenGL camera/view matrix
 };
 #endif // WINDOWMANAGER_H_
 
