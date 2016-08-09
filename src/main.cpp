@@ -5,6 +5,10 @@
 Need it to use Shared_ptr that lwets me create a pointer that i can share*/
 #include <memory>
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 /* Simple program that starts our Window manager */
 int main(int argc, char *argv[]) {
 	std::shared_ptr<WindowManager> window;

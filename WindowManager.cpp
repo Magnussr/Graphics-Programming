@@ -1,7 +1,11 @@
+#include <GL/glew.h>
+
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "WindowManager.h"
 
 #include "GameException.h"
-#include <GL/glew.h>
+
 #include "include/GameManager.h"
 
 GameManager manager;
@@ -98,12 +102,17 @@ void WindowManager::play() {
 		while (SDL_PollEvent(&event)) {// poll for pending events
 			switch (event.type) {
 			case SDL_KEYDOWN:
-				if (event.key.keysym.sym == SDLK_ESCAPE) //Esc
+				switch(event.key.keysym.sym) {
+				case SDLK_ESCAPE:
 					doExit = true;
-				if (event.key.keysym.sym == SDLK_q
-					&& event.key.keysym.mod & KMOD_CTRL) //Ctrl+q
-					doExit = true;
-				break;
+					break;
+				case SDLK_q:
+					if(event.key.keysym.mod & KMOD_CTRL) //Ctrl+q
+						doExit = true;
+					break;
+				//case SDLK_RIGHT:
+				//	view_matrix = glm::translate(view_matrix, glm::vec3(-0.1, 0.0, 0.0));
+				}
 			case SDL_QUIT: //e.g., user clicks the upper right x
 				doExit = true;
 				break;

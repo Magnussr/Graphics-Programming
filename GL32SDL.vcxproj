@@ -15,14 +15,24 @@
     <ClInclude Include="include\GeometryManager.h" />
     <ClInclude Include="include\GlTools.h" />
     <ClInclude Include="include\Timer.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="StatusCheck.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\GeometryManager.cpp" />
     <ClCompile Include="src\GlTools.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="StatusCheck.cpp" />
     <ClCompile Include="WindowManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AssignmentCubeFragmentShader.frag" />
+    <None Include="AssignmentCubeVertexShader.vert" />
+    <None Include="Lab3FragmentShader.frag" />
+    <None Include="Lab3VertexShader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0EB6082A-7B48-4E60-B4B3-2EB3C7254AC1}</ProjectGuid>
